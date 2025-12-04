@@ -114,6 +114,10 @@ def dashboard_page():
             "Created Time", "Closed Time"
         ])
 
+        # Normalize status values
+        df_queries['Status'] = df_queries['Status'].replace({"Opened": "Open"})
+
+
         df_queries_display = df_queries.drop(columns=["Client ID"])
         st.dataframe(df_queries_display)
 
@@ -176,6 +180,10 @@ def dashboard_page():
             "Query Description", "Status",
             "Created Time", "Closed Time"
         ])
+
+        # Normalize status values
+        df_queries['Status'] = df_queries['Status'].replace({"Opened": "Open"})
+
 
         df_queries_display = df_queries.drop(columns=["Client ID"])
         st.dataframe(df_queries_display)
