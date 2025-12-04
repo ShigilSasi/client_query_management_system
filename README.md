@@ -41,7 +41,7 @@ Built with **Python, Streamlit, and SQLite**.
 
 ##  Project Structure
 
-📁 client_query_management_system/
+client_query_management_system/
 │
 ├── app.py # Main Streamlit app
 ├── database.db # SQLite database
