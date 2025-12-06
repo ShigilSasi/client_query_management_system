@@ -30,15 +30,14 @@ def login_page():
         if user:
             st.session_state.user = user
             st.session_state.page = "dashboard"
-            st.rerun()  # <- Fixed here
+            st.rerun()  
         else:
             st.error("Invalid username or password.")
 
     st.write("---")
     if st.button("Register"):
         st.session_state.page = "register"
-        st.rerun()  # <- Fixed here
-
+        st.rerun()  
 
 # -----------------------------
 # REGISTRATION PAGE
@@ -53,14 +52,13 @@ def register_page():
         if auth.register_user(username, password):
             st.success("Registered successfully! Ask admin to assign role.")
             st.session_state.page = "login"
-            st.rerun()  # <- Fixed here
+            st.rerun()  
         else:
             st.error("Username already exists.")
 
     if st.button("Back to Login"):
         st.session_state.page = "login"
-        st.rerun()  # <- Fixed here
-
+        st.rerun()  
 
 # -----------------------------
 # DASHBOARD PAGE
@@ -74,7 +72,7 @@ def dashboard_page():
 
     if st.sidebar.button("Logout 🔒"):
         st.session_state.clear()
-        st.rerun()  # <- Fixed here
+        st.rerun() 
 
     # ========== ADMIN DASHBOARD ==========
     if role == "admin":
@@ -103,7 +101,7 @@ def dashboard_page():
             conn.commit()
             conn.close()
             st.success(f"{user_to_update} updated to {new_role}")
-            st.rerun()  # <- Fixed here
+            st.rerun()  
 
         st.write("All Queries:")
         queries = support.get_all_queries()
@@ -155,7 +153,7 @@ def dashboard_page():
             if email and mobile and heading and description:
                 client.submit_query(user_id, email, mobile, heading, description)
                 st.success("Query submitted successfully!")
-                st.rerun()  # <- Fixed here
+                st.rerun()  
             else:
                 st.warning("Please fill all fields.")
 
@@ -198,7 +196,7 @@ def dashboard_page():
             if query_id.strip() != "":
                 support.update_query_status(query_id, new_status)
                 st.success("Status updated successfully!")
-                st.rerun()  # <- Fixed here
+                st.rerun()  
             else:
                 st.warning("Enter a Query ID.")
 
